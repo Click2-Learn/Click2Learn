@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأعمار 12–16</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Cinzel:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background:
+                linear-gradient(rgba(245, 240, 230, 0.95), rgba(245, 240, 230, 0.95)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f5f0e6"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23e8d9c9" stroke-width="0.3" opacity="0.2"/></svg>');
+            background-size: cover, 40px 40px;
+            color: #333;
+            transition: opacity 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(to bottom, #1a3a5f, #0a2e5a);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            padding: 12px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-image {
+            height: 90px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1em;
+            padding: 10px 18px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-weight: 600;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            right: 50%;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: all 0.3s;
+            transform: translateX(50%);
+        }
+
+        nav ul li a:hover {
+            color: #D4AF37;
+        }
+
+        nav ul li a:hover::after {
+            width: 80%;
+        }
+
+        main {
+            padding-top: 80px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: rgba(250, 230, 192, 0.6);
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8em;
+            color: #0A2E5A;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            color: #3E2723;
+            max-width: 700px;
+            margin: 15px auto 0;
+            line-height: 1.6;
+        }
+
+        .categories-section {
+            padding: 0 20px 60px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transition: all 0.4s ease;
+            text-align: center;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0; /* Adjusted for RTL */
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
+            border-color: #D4AF37;
+        }
+
+        .category-icon {
+            font-size: 3em;
+            color: #D4AF37;
+            margin-bottom: 15px;
+        }
+
+        .category-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.7em;
+            color: #0A2E5A;
+            margin: 0 0 20px;
+        }
+
+        .resources-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .resources-list li {
+            margin-bottom: 12px;
+        }
+
+        .resources-list a {
+            display: block;
+            color: #3E2723;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 10px;
+            background: #fcf9f0;
+            font-size: 1.05em;
+            transition: all 0.2s;
+            border: 1px solid #e8d9c9;
+            text-align: right;
+        }
+
+        .resources-list a:hover {
+            background: #fff8e8;
+            color: #D4AF37;
+            border-color: #D4AF37;
+            transform: translateX(-4px); /* RTL: move left */
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.4em; }
+            .hero p { font-size: 1.2em; }
+            .category-card h3 { font-size: 1.5em; }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2em; }
+            .hero p { font-size: 1.1em; }
+            .category-grid { grid-template-columns: 1fr; }
+            .category-card { padding: 20px 15px; }
+            .category-card h3 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <nav>
+                <ul>
+                    <li><a href="C:\Users\Fast\Downloads\Click2Learn\homepagear.html" class="transition-button">الرئيسية</a></li>
+                    <li><a href="C:\Users\Fast\Downloads\Click2Learn\aboutus.html" class="transition-button">من نحن</a></li>
+                    <li><a href="C:\Users\Fast\Downloads\Click2Learn\contactus.html" class="transition-button">اتصل بنا</a></li>
+                    <li><a href="C:\Users\Fast\Downloads\Click2Learn\age ranges eng\path-12-16.html" class="transition-button">EN</a></li>
+                </ul>
+            </nav>
+            <img src="C:\Users\Fast\Downloads\Click2Learn\images\Logo.png" alt="شعار" class="logo-image">
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>مسار التعلم: الأعمار 12 – 16</h1>
+            <p>ابنِ مهارات حياتية حقيقية، اكتشف شغفك، واستعد للمستقبل من خلال موارد مختارة بعناية وعالية الجودة.</p>
+        </section>
+
+        <section class="categories-section">
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">🔤</div>
+                    <h3>اللغة الإنجليزية</h3>
+                    <ul class="resources-list">
+                        <li><a href="https://www.coursat.org/c/413" target="_blank">الإنجليزية – المستوى المتقدم 1</a></li>
+                        <li><a href="https://www.coursat.org/c/414" target="_blank">الإنجليزية – المستوى المتقدم 2</a></li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🌍</div>
+                    <h3>لغات أخرى</h3>
+                    <ul class="resources-list">
+                        <li><a href="https://www.coursat.org/c/228" target="_blank">التركية – المستوى 1</a></li>
+                        <li><a href="https://www.coursat.org/c/305" target="_blank">التركية – المستوى 2</a></li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">💻</div>
+                    <h3>تطوير الويب</h3>
+                    <ul class="resources-list">
+                        <li><a href="https://www.coursat.org/c/20" target="_blank">أساسيات لغة HTML</a></li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">📈</div>
+                    <h3>التسويق الرقمي</h3>
+                    <ul class="resources-list">
+                        <li><a href="https://www.coursat.org/c/369" target="_blank">التسويق على إنستجرام</a></li>
+                        <li><a href="https://www.coursat.org/c/372" target="_blank">التسويق على يوتيوب</a></li>
+                        <li><a href="https://www.coursat.org/c/370" target="_blank">التسويق على لينكدإن</a></li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🧠</div>
+                    <h3>التطوير الشخصي</h3>
+                    <ul class="resources-list">
+                        <li><a href="https://www.coursat.org/c/340" target="_blank">مهارات التواصل الفعّال</a></li>
+                        <li><a href="https://www.coursat.org/c/361" target="_blank">التفكير الإيجابي وبناء الثقة</a></li>
+                        <li><a href="https://www.coursat.org/c/360" target="_blank">إدارة الوقت والتركيز</a></li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🚀</div>
+                    <h3>مهارات المستقبل</h3>
+                    <ul class="resources-list">
+                        <li><a href="" target="_blank"></a></li>
+                        <li><a href="" target="_blank"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div style="text-align: center; margin: 40px 0 60px;">
+            <a href="C:\Users\Fast\Downloads\Click2Learn\age-ranges-ar.html" style="background: linear-gradient(to right, #1a3a5f, #0a2e5a); color: #D4AF37 !important; font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.3em; text-decoration: none; padding: 14px 36px; border-radius: 50px; display: inline-block; transition: all 0.4s; box-shadow: 0 6px 18px rgba(10, 46, 90, 0.3); letter-spacing: 1px; border: 2px solid #D4AF37;" 
+               onmouseover="this.style.transform='translateY(-4px) scale(1.03)'; this.style.boxShadow='0 10px 25px rgba(10, 46, 90, 0.4)';" 
+               onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 6px 18px rgba(10, 46, 90, 0.3)';">
+                ← العودة إلى فئات الأعمار
+            </a>
+        </div>
+    </main>
+
+    <script>
+        document.querySelectorAll('.transition-button').forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault();
+                document.body.style.opacity = '0';
+                setTimeout(() => location.href = e.target.href, 500);
+            });
+        });
+    </script>
+</body>
+
+</html>
